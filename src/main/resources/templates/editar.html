@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos/cabecero::cabecero-seccion(titulo='Editar')}"/>
+
+<body>
+<!--Div del menu de navegacion-->
+<div th:replace="~{fragmentos/navegacion::navegacion-seccion}"/>
+
+<!--Titulo de la pagina-->
+<div class="container">
+    <div class="container text-center" style="margin: 30px">
+        <h3>Editar Contacto</h3>
+    </div>
+
+    <!--Formulario de editar-->
+    <div class="container">
+        <!--th:object -> Recibe un objeto por parte del controlador que contiene informacion-->
+        <form action="/editar" modelAttribute="contacto" method="post">
+            <input type="hidden" name="idContacto" value="${contacto.idContacto}">
+
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" th:value="${contacto.nombre}" required="true">
+            </div>
+
+            <div class="mb-3">
+                <label for="celular" class="form-label">Celular</label>
+                <input type="text" class="form-control" id="celular" name="celular" th:value="${contacto.celular}" required="true">
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" th:value="${contacto.email}" required="true">
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-warning btn-sm me-3">Editar</button>
+                <a href="/" class="btn btn-danger btn-sm">Regresar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div th:replace="~{fragmentos/pie_pagina::pie_pagina_seccion}"></div>
+
+</body>
+</html>
